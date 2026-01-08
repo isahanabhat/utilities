@@ -2,6 +2,13 @@ import cv2
 import argparse
 import os
 
+
+def check_path(path):
+    if os.path.exists(path):
+        return True
+    return False
+
+
 class VideoSnip:
     def __init__(self, video_path, dest_path, n):
 
@@ -9,18 +16,12 @@ class VideoSnip:
         self.dest_path = dest_path
         self.n = n
 
-    def check_path(self, path):
-        if os.path.exists(path):
-            return True
-        return False
-
-
     def retrieve_frames(self):
-        if not self.check_path(self.video_path):
+        if not check_path(self.video_path):
             print("Video path does not exist")
             return
 
-        if not self.check_path(self.dest_path):
+        if not check_path(self.dest_path):
             print("Folder path does not exist")
             return
 
@@ -40,7 +41,7 @@ class VideoSnip:
 
             ret, frame = video.read()
             if ret:
-                name = "Frame_" + str(count)
+                name = "Frame_" + str(count).zfill(3)
                 save_file = os.path.join(self.dest_path, name + ".jpg")
                 count += 1
 

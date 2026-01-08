@@ -2,5 +2,6 @@ __pycache__/
 .idea/
 z_try/
 *.log
-output/
+output_v_s/
+output_f_s/
 input/
