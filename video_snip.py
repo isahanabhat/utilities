@@ -35,13 +35,18 @@ class VideoSnip:
 
         start = 0
         count = 1
+
+        # video name
+        video_path_list = self.video_path.split("\\")
+        video_name = video_path_list[-1].split(".")[0]
+        
         while start <= milliseconds:
             video.set(cv2.CAP_PROP_POS_MSEC, start)
             start += self.n
 
             ret, frame = video.read()
             if ret:
-                name = "Frame_" + str(count).zfill(3)
+                name = video_name + "_" + str(count).zfill(3)
                 save_file = os.path.join(self.dest_path, name + ".jpg")
                 count += 1
 

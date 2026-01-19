@@ -5,3 +5,4 @@ z_try/
 output_v_s/
 output_f_s/
 input/
+file_to_chunks.py
